@@ -1,54 +1,109 @@
+
+
+
+
+
+
+
 #include "Functions.h"
 
 
-void grid_move(int grid[50][50],int *max_r,int *max_c,int *remaining_lines)
+void grid_move()
 {
-    char scan[100];
-        int tem,win1,win2;
+
+        int error;
     int count=0;
-    int valid=0;
-    int error=0;
+    char scan[100];
+
       int get_move[move_size];
 
-    for(int i=0;i<(*max_r);i++)
-    for(int j=0;j<(*max_c);j++)
-    {
 
-        if(i%4==0&&j%9==0)
-            grid[i][j]=3; //3 for dots
-    }
 
-    printf("1-redo 2-move\n");
-    fgets (scan,100,stdin);
+    printf("1-Move 2-Undo 3-Redo 4-Save and quit\n");
+    scanf("\n");
+          fgets (scan,100,stdin);
 rm=atoi(scan);
 //getchar();
-    while(rm!=1&&rm!=2)
-  {printf("please try again typing your choice correctly\a\n");
+    while(rm!=1&&rm!=2&&rm!=3&&rm!=4)
+  {
+      printf("please try again typing your choice correctly\a\n");
   fgets (scan,100,stdin);
 rm=atoi(scan);
 //getchar();
       }
+      if(rm==4)
+      {
+          save();
+          exit(1);
+      }
+      if(mode1==1)
 
-if(rm==1)
+       {
+//needs edit here moves=0
+      while(rm==2&&remaining_lines==beglines)
+      {
+          printf("Undo can not be done NOW!!\a\n");
+            fgets (scan,100,stdin);
+              rm=atoi(scan);
+               //getchar();
+      }
+       }
+      else if(mode1==2)
+       while(rm==2&&remaining_lines==explines)
+      {
+          printf("Undo can not be done NOW!!\a\n");
+          fgets (scan,100,stdin);
+          rm=atoi(scan);
+            //getchar();
+      }
+
+       while(rm==3&&r==0)
+      {
+          printf("Redo can not be done NOW!!\a\n");
+          fgets (scan,100,stdin);
+          rm=atoi(scan);
+            //getchar();
+      }
+
+if(rm==2)
 {
-    if((*remaining_lines)==60)
-        printf("redo can not be done");
-    else
+
+undo( get_move);
+evaluatemove(get_move);
+
+
+}
+else if(rm==3)
+{
+
 redo( get_move);
+evaluatemove(get_move);
+
 }
 
+ if(rm==1)
+    {
 
- else if(rm==2)
+while (count<4)
     {
-       while (count<4)
-    {
+        fflush(stdin);
+        printf("enter the move you want ");
          for(int i=0;i<move_size;i++)
        {
          scanf("%d",&get_move[i]);
-         getchar();
+     //    if(scanf("%d",&get_move[i]) == 0)
+   //   getchar();
+   for(int check=0;check<4;check++)
+   {
+   if (get_move[check]>6||get_move[check]<1)
+            {get_move[check]=0;}
+       }
         count++;
-        if(get_move[i]>(*max_r)/4+1||get_move[i]<1)//checking for limits of a move's index[1 to max+1]
+        error=0;
+        if(get_move[i]>(max_r)/4+1||get_move[i]<1)//checking for limits of a move's index[1 to max+1]
         error=1;
+        if(get_move[i]!= (int) get_move[i])
+            error=1;
        }
 
 
@@ -72,34 +127,42 @@ redo( get_move);
             get_move[i]=(get_move[i]-1)*9;
         }
 
-if(get_move[2]==get_move[3])
     if ((grid[get_move[1]][get_move[2]+1]==1&&get_move[0]==get_move[1])||(get_move[2]==get_move[3]&&grid[get_move[0]+1][get_move[2]]==2))//Checking for a repeated move
     {
         printf("\nRepeated Move! Try Again..\n");
         count=0;
     }
-    }
-
+}
+error=0;
  }
- error=0;
 
 
-if(rm==2){
+
+if(rm==1){
          for(int i=0;i<move_size;i++)
 {
     big[c]=get_move[i];
     c++;
 
 }
+evaluatemove(get_move);
+//edit
+r=0;
+}
+
+
 }
 
 
 
 
 
-
-      if(get_move[0]==get_move[1])
+void evaluatemove (int get_move[move_size])
+//changing the index of a move starts..
 {
+   int tem;
+      if(get_move[0]==get_move[1])
+{//reverse
   if(get_move[3]<get_move[2])
   {
     tem=get_move[3];
@@ -107,18 +170,24 @@ if(rm==2){
     get_move[2]=tem;
   }
   for(int i=get_move[2]+1;i<get_move[3];i++)
-    {if(rm==2)
-        grid[get_move[1]][i]=1;
-        if(rm==1)
-        grid[get_move[1]][i]=0;
+    {
+        if(rm==1&&one.turn==1||rm==3&&one.turn==1)
+        {grid[get_move[1]][i]=1;undoo[get_move[1]][i]=1;}
+        else if(rm==1&&two.turn==1||rm==3&&two.turn==1)
+        {grid[get_move[1]][i]=6;undoo[get_move[1]][i]=6;}
+        else if(rm==1&&alone.turn==1||rm==3&&alone.turn==1)
+        {grid[get_move[1]][i]=1;undoo[get_move[1]][i]=1;}
+       else if(rm==2)
+        {grid[get_move[1]][i]=0;undoo[get_move[1]][i]=0;}
+
             // 1 for horizontal
-    }  // 1 for horizontal
+    }
 
      int constant =get_move[0];
      int start=get_move[2];
      int end=get_move[3];
 
- horizontal_win(constant,start,end,grid);
+ horizontal_win(constant,start,end);
 }
 
 
@@ -131,10 +200,14 @@ if(rm==2){
     get_move[0]=tem;
   }
   for(int i=get_move[0]+1;i<get_move[1];i++)
-     {if(rm==2)
-        grid[i][get_move[2]]=2;
-        if(rm==1)
-             grid[i][get_move[2]]=0;
+     {if(rm==1&&one.turn==1||rm==3&&one.turn==1)
+        {grid[i][get_move[2]]=2;undoo[i][get_move[2]]=2;}
+        else if(rm==1&&two.turn==1||rm==3&&two.turn==1)
+        {grid[i][get_move[2]]=7;undoo[i][get_move[2]]=7;}
+         else if(rm==1&&alone.turn==1||rm==3&&alone.turn==1)
+        {grid[i][get_move[2]]=2;undoo[i][get_move[2]]=2;}
+        else if(rm==2)
+             {grid[i][get_move[2]]=0;undoo[i][get_move[2]]=0;}
           // 2 for vertical
     } // 2 for vertical
 
@@ -144,41 +217,42 @@ if(rm==2){
 
 // putting numbers in the boxes :)
 
- vertical_win(constant,start,end,grid);
+
+ vertical_win(constant,start,end);
     }
 
-system("cls");
-printf("\n \n \n");
+printgrid();
 
-    //   int c=1;
-      for(int i=0;i<(*max_r);i++)
-      {
-    { for(int j=0;j<(*max_c);j++)
-     switch (grid[i][j])
-       {
-         case 1:printf("%c",196);
-                 break;
-         case 2: printf("%c",179);
-                 break;
-          case 3:printf("%c",254);
-                 break;
-          case 4:printf("1");
-                 break;
-        case 5:printf("2");
-                 break;
-           default: printf(" ");
-                break;
-       }printf("\n");
-    }}
+    if(mode2==1){
+            alone.moves++;}
 
+
+    if(mode2==2){
      if (one.turn>0)
-     one.remainingmoves--;
+     one.moves++;
      if (two.turn>0)
-      two.remainingmoves--;
+      two.moves++;}
 
 //    current.remainingmoves--;
-    (*remaining_lines)--;
-
-
+    remaining_lines--;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
