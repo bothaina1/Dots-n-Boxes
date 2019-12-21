@@ -4,7 +4,7 @@
 int main()
 
 {
-      start();
+      init();
 
 while(1){
 if(mode2==2){
@@ -62,7 +62,7 @@ color(15);
 
 }}
 
-}the_winner(); save_top_10();    start();
+}the_winner(); save_top_10();    init();
     }
 
 
@@ -133,7 +133,7 @@ color(15);        computeer.turn--;if(remaining_lines==0){break;}
 
         } }
 
-        }  the_winner();  save_top_10();  start();  }
+        }  the_winner();  save_top_10();  init();  }
 
         }}
 
