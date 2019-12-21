@@ -1,0 +1,24 @@
+#include "Function.h"
+
+
+
+void time_taken()
+{
+
+
+  start_t=clock()-start_t;
+timetaken=(start_t/CLOCKS_PER_SEC);
+minutes_taken=(int)timetaken/60;
+seconds_taken=(int)timetaken%60;
+
+}
+
+
+void time_passed()
+
+{
+    timepassed=clock();
+timepassed=(timepassed/CLOCKS_PER_SEC);
+minutes_passed=(int)timepassed/60;
+seconds_passed=(int)timepassed%60;
+}

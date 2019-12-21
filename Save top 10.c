@@ -1,33 +1,10 @@
 #include "Functions.h"
 
 void save_top_10()
-{/*int temp;char tem[100];
-for(int i=t-1;i>0;i--)
-{
-   if(strcmp(top[t].name2,top[i].name2)==0)
-   {
-       if(top[t].score2>top[i].score2)
-            {top[i].score2=top[t].score2;}
-
-       break;
-   }
-}
-for(int i=t;i>1;i--)
-if(top[i].score2>top[i-1].score2)
-{
-    temp=top[i].score2;
-    top[i].score2=top[i-1].score2;
-   top[i-1].score2=temp;
-   strcpy(tem,top[i].name2);
-   strcmp(top[i].name2,top[i-1].name2);
-   strcmp(top[i-1].name2,tem);
-}
-*/
+{  
 
  FILE *top10;
-   top10= fopen("top10.txt","rb");
-       fread(top,sizeof(struct win),10,top10);
-   fclose(top10);
+   
  top10= fopen("top10.txt","wb");
   if (top10==NULL)
        {
@@ -46,6 +23,11 @@ if(top[i].score2>top[i-1].score2)
 
 void load_top_10()
 {
+        FILE *vt;
+  vt=fopen("variable.txt","r");
+  fscanf(vt,"%d",&t);
+  fclose(vt);
+   
  FILE *top10;
  top10= fopen("top10.txt","rb");
   if (top10==NULL)
@@ -77,3 +59,42 @@ void load_top_10()
 
 
 }
+
+
+
+
+
+
+
+
+void testing()
+{ strlwr(top[t].name2);
+int value=0; int temp;char tem[100];
+for(int i=t-1;i>0;i--)
+{
+   if(strcmp(top[t].name2,top[i].name2)==0)
+   {value=1;
+       if(top[t].score2>top[i].score2)
+            {top[i].score2=top[t].score2;}
+
+        break;
+   }
+}
+
+if(value==1)
+{if(t<10||t==10)
+ t--;}
+
+for(int i=t;i>1;i--)
+if(top[i].score2>top[i-1].score2)
+{
+    temp=top[i].score2;
+    top[i].score2=top[i-1].score2;
+   top[i-1].score2=temp;
+   strcpy(tem,top[i].name2);
+   strcpy(top[i].name2,top[i-1].name2);
+   strcpy(top[i-1].name2,tem);
+}
+
+}
+

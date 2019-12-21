@@ -1,0 +1,98 @@
+#include "Function.h"
+
+void the_winner()
+{
+FILE *top10;
+top10= fopen("top10.txt","rb");
+       fread(top,sizeof(struct win),10,top10);
+   fclose(top10);
+
+    FILE *vt;
+  vt=fopen("variable.txt","r");
+  fscanf(vt,"%d",&t);
+  fclose(vt);
+printf("%d",t);
+    if(mode2==2)
+    {
+        if(one.score>two.score)
+           {
+             printf("%s is the winner",one.name);
+
+              strcpy(top[t].name2,one.name);
+               top[t].score2=one.score;
+               testing();
+                if(t<10||t==10)
+               {t++;}printf("%d",t);
+
+
+              strcpy(top[t].name2,two.name);
+               top[t].score2=two.score; testing();
+              if(t<10||t==10)
+               {t++;}printf("%d",t);
+
+           }
+       else if(two.score>one.score)
+            {printf("%s is the winner",two.name);
+                strcpy(top[t].name2,two.name);
+               top[t].score2=two.score; testing();
+                if(t<10||t==10)
+                {t++;}printf("%d",t);
+
+
+              strcpy(top[t].name2,one.name);
+               top[t].score2=one.score; testing();
+                   if(t<10||t==10)
+               t++;printf("%d",t);
+
+            }
+        else if(two.score==one.score)
+           {
+
+            printf("it's draw");
+             strcpy(top[t].name2,two.name);
+               top[t].score2=two.score; testing();
+                  if(t<10||t==10)
+                t++;printf("%d",t);
+
+
+              strcpy(top[t].name2,one.name);
+               top[t].score2=one.score; testing();
+                  if(t<10||t==10)
+               t++;printf("%d",t);
+
+
+
+    }}
+
+      if(mode2==1)
+    {
+        if(alone.score>computeer.score)
+            {printf("%s is the winner",alone.name);
+                strcpy(top[t].name2,alone.name);
+               top[t].score2=alone.score;testing();
+                   if(t<10||t==10)
+                t++;printf("%d",t);
+
+            }
+       else if(computeer.score>alone.score)
+           {printf("you lost the game");
+                strcpy(top[t].name2,alone.name);
+               top[t].score2=alone.score; testing();
+                   if(t<10||t==10)
+                t++;printf("%d",t);
+
+           }
+        else if(computeer.score=alone.score)
+            {printf("it's draw");
+            strcpy(top[t].name2,alone.name);
+               top[t].score2=alone.score; testing();
+                   if(t<10||t==10)
+                t++;printf("%d",t);}
+    }
+
+
+
+  vt=fopen("variable.txt","w");
+  fprintf(vt,"%d",t);
+  fclose(vt);
+}

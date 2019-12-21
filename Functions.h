@@ -44,10 +44,16 @@ extern int max_r,max_c;
 int undoo[50][50];
 int AI[50];
 extern int ai;
+extern int sv;extern  double timetaken;extern  double timepassed;extern clock_t start_t;extern int minutes_taken;
+extern int seconds_taken;extern int minutes_passed;
+extern int seconds_passed;
 
 
-void load ();
-void save();
+
+
+void time_taken();
+void load ();void computer();void undo(int get_move[move_size]);
+void save();void evaluatemove (int get_move[move_size]);
 void redo(  int get_move[move_size]);void computer();void undo(int get_move[move_size]);
 void grid_move();
 int vertical_win(int constant ,int start,int end );
