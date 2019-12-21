@@ -3,7 +3,9 @@
 
  void computer()
 
-{int get_move[move_size];int j,m; int count=0,k=0;
+{
+    delay(1);
+    int get_move[move_size];int j,m; int count=0,k=0;
 
 if(ai!=0)
 {
@@ -16,7 +18,7 @@ if(ai!=0)
 }
 
 
-else
+if(ai==0||(grid[get_move[1]][get_move[2]+1]==1&&get_move[0]==get_move[1])||(get_move[2]==get_move[3]&&grid[get_move[0]+1][get_move[2]]==2)||(grid[get_move[1]][get_move[2]+1]==6&&get_move[0]==get_move[1])||(get_move[2]==get_move[3]&&grid[get_move[0]+1][get_move[2]]==7))
 {
      /* Intializes random number generator */
  srand((unsigned)time(NULL));
@@ -71,7 +73,7 @@ else
             get_move[i]=(get_move[i]-1)*9;
         }
 
-           if(get_move[0]==get_move[1]){
+          if(get_move[0]==get_move[1]){
         if(grid[get_move[1]][get_move[2]+1]==0)
             count++;
         else
