@@ -42,6 +42,12 @@ mode2=atoi(scan);
       fgets(one.name,100,stdin);
       printf("player 2 name: ");
       fgets(two.name,100,stdin);
+      char *p = one.name;
+       p[strlen(p)-1] = 0;
+       char *b = two.name;
+         b[strlen(b)-1] = 0;
+    
+    
   }
 
 
@@ -49,6 +55,8 @@ mode2=atoi(scan);
   {
       printf("Enter your name: ");
       fgets(alone.name,100,stdin);
+      char *p = alone.name;
+        p[strlen(p)-1] = 0;
 
   }
 
@@ -116,11 +124,25 @@ mode1=atoi(scan);
             grid[i][j]=3; //3 for dots
     }
  }
-    else if (menu==2)
-    {
-        load();
-
-        //
+ 
+ 
+  
+       else if (menu==2)
+    {  printf("which game do you want to save ?\n\n1-game one\t\t2- game two\t\t 3-game three \n");
+     fgets (scan,100,stdin);
+      game=atoi(scan);
+      while(game!=1&&game!=2&&game!=3)
+  {printf("please try again typing your choice correctly\a\n");
+  fgets (scan,100,stdin);
+  game=atoi(scan);
+      }
+      if(game==1)
+        load1();
+      if(game==2)
+        load2();
+      if(game==3)
+      load3();
+        //}
         if(mode1==1)
   {
       max_r=9;//max rows with spaces
@@ -139,46 +161,16 @@ mode1=atoi(scan);
 
         //
     }
+
+ 
+ 
+ 
     if(menu==1||menu==2)
     {
 
    // system("cls");
      printf("\n\n\t\t\tGame's guide: You should enter your moves in this form : Row Row Column Column\n\t\tFor example: if you want to connect the first horizontal line in the first row your input would be : 1 1 1 2\n\n\n\n");
-
-    for(index=1;index<=maxindex;index++)
-    {
-        printf("   %d     ",index);
-    }
-    index=1;
-printf("\n\n%d  ",index);
-index++;
-for(int i=0;i<(max_r);i++)
-      {
-    { for(int j=0;j<(max_c);j++)
-     switch (grid[i][j])
-       {
-         case 1:printf("%c",196);
-                 break;
-         case 2: printf("%c",179);
-                 break;
-          case 3:printf("%c",254);
-                 break;
-          case 4:printf("1");
-                 break;
-        case 5:printf("2");
-                 break;
-           default: printf(" ");
-                break;
-       }
-       printf("\n");
-        if((index-1)%4!=0)
-            printf("   ");
-       if((index-1)%4==0)
-       printf("%d  ",(index/4)+1);
-index++;
-    }
-    }
-
+         printgrid();
     }
 //////////////////////////
      else if(menu==4)
