@@ -19,23 +19,39 @@ void grid_move()
 
 
 
-    printf("1-Move 2-Undo 3-Redo 4-Save and quit\n");
+   
+    printf("1-Move   2-Undo   3-Redo   4-save game   5-main menu\n");
     scanf("\n");
           fgets (scan,100,stdin);
 rm=atoi(scan);
 //getchar();
-    while(rm!=1&&rm!=2&&rm!=3&&rm!=4)
+    while(rm!=1&&rm!=2&&rm!=3&&rm!=4&&rm!=5)
   {
       printf("please try again typing your choice correctly\a\n");
   fgets (scan,100,stdin);
 rm=atoi(scan);
 //getchar();
       }
-      if(rm==4)
-      {
-          save();
-          exit(1);
-      }
+   
+   if(rm==4)
+
+   {
+        FILE *sav;
+  sav=fopen("variable2.txt","r");
+  fscanf(sav,"%d",&sv);
+  fclose(sav);
+
+        if(sv%3==0)
+       save1();
+       if(sv%3==1)
+       save2();
+        if(sv%3==2)
+       save3();
+
+   }
+         if(rm==5)
+    {start();}
+        
       if(mode1==1)
 
        {
