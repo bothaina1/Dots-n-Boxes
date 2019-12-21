@@ -10,13 +10,13 @@ void init ()
     printf("\n\n\n\t\t\t\t\t\tDots and Boxes\n\n\n\n\n");
     printf("\t\t\t\t 1-start game\n\n\t\t\t\t2-load game\n\n\t\t\t\t3-top 10 player\n\n\t\t\t\t 4-exit \n\n");
 
-  //this is for error correction
+  //this is for error correction if the user inputs a character or more than one input
 char scan[100];
         // scanf("%d",&menu);
         fgets (scan,100,stdin);
 menu=atoi(scan);
 
-
+//Choose preferred option from the menu
     while(menu!=1&&menu!=2&&menu!=3&&menu!=4)
   {printf("please try again typing your choice correctly\a\n");
  fgets (scan,100,stdin);
@@ -26,7 +26,7 @@ menu=atoi(scan);
     if(menu==1)
        {
 
-
+//If the user 
   printf("choose \n1-one player \t\t2-two player\n");
  fgets (scan,100,stdin);
 mode2=atoi(scan);
