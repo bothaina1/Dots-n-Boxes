@@ -47,7 +47,7 @@ extern int ai;
 extern int sv;extern  double timetaken;extern  double timepassed;extern clock_t start_t;extern int minutes_taken;
 extern int seconds_taken;extern int minutes_passed;
 extern int seconds_passed;
-
+extern int game;
 
 
 
@@ -58,9 +58,11 @@ void redo(  int get_move[move_size]);void computer();void undo(int get_move[move
 void grid_move();
 int vertical_win(int constant ,int start,int end );
 int horizontal_win(int constant ,int start,int end);
-void init ();
+void start ();
 void color(int ForgC);
 void printgrid();
 void delay(int number_of_seconds);
+void the_winner();extern   int menu;extern  double constant;
+
 
 #endif // FUNCTIONS_H_INCLUDED

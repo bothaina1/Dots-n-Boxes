@@ -1,6 +1,6 @@
-#include "Function.h"
-int c=0;
-int big[240];
+#include "Functions.h"
+int c=0;//
+int big[240];//array holding all the moves
 int rm=0;
 
 int mode1=0;
@@ -26,4 +26,6 @@ int seconds_passed;
  int possiblemoves=0;
 int ai=0;
 
-
+int game;
+  int menu;
+  double constant;

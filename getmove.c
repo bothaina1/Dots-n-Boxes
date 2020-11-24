@@ -19,8 +19,11 @@ void grid_move()
 
 
 
-   
+color(14);
     printf("1-Move   2-Undo   3-Redo   4-save game   5-main menu\n");
+    printf("%lf",constant);
+    color(15);
+
     scanf("\n");
           fgets (scan,100,stdin);
 rm=atoi(scan);
@@ -32,7 +35,7 @@ rm=atoi(scan);
 rm=atoi(scan);
 //getchar();
       }
-   
+
    if(rm==4)
 
    {
@@ -51,7 +54,7 @@ rm=atoi(scan);
    }
          if(rm==5)
     {start();}
-        
+
       if(mode1==1)
 
        {
@@ -144,6 +147,11 @@ while (count<4)
         }
 
     if ((grid[get_move[1]][get_move[2]+1]==1&&get_move[0]==get_move[1])||(get_move[2]==get_move[3]&&grid[get_move[0]+1][get_move[2]]==2))//Checking for a repeated move
+    {
+        printf("\nRepeated Move! Try Again..\n");
+        count=0;
+    }
+    if ((grid[get_move[1]][get_move[2]+1]==6&&get_move[0]==get_move[1])||(get_move[2]==get_move[3]&&grid[get_move[0]+1][get_move[2]]==7))//Checking for a repeated move
     {
         printf("\nRepeated Move! Try Again..\n");
         count=0;

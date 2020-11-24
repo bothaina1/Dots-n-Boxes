@@ -60,7 +60,7 @@ if(counter1==2&&mode2==1)
 
 
 
-    if(counter1==3)
+   else if(counter1==3)
         {
 
 

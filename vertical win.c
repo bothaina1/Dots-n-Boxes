@@ -17,7 +17,7 @@ int vertical_win(int constant ,int start,int end)
         if(counter1==2&&mode2==1)
      {
 
-     if(grid[start][constant-1]!=1||grid[start][constant-1]!=6)
+     if(grid[start][constant-1]!=1&&grid[start][constant-1]!=6)
       {
         AI[ai]=start;
         ai++;
@@ -28,7 +28,7 @@ int vertical_win(int constant ,int start,int end)
         AI[ai]=constant;
         ai++;
       }
-    if(grid[start+1][constant-9]!=2||grid[start+1][constant-9]!=7)
+    if(grid[start+1][constant-9]!=2&&grid[start+1][constant-9]!=7)
     {
        AI[ai]=start;
         ai++;
@@ -40,7 +40,7 @@ int vertical_win(int constant ,int start,int end)
         ai++;
     }
 
-      if(grid[end][constant-1]!=1||grid[end][constant-1]!=6)
+      if(grid[end][constant-1]!=1&&grid[end][constant-1]!=6)
        {
            AI[ai]=end;
         ai++;
@@ -176,10 +176,10 @@ else if(mode2==2){
         {counter2++;}
 
 
-        if(counter1==2&&mode2==1)
+        if(counter2==2&&mode2==1)
      {
 
-     if(grid[start][constant+1]!=1||grid[start][constant+1]!=6)
+     if(grid[start][constant+1]!=1&&grid[start][constant+1]!=6)
       {
         AI[ai]=start;
         ai++;
@@ -190,7 +190,7 @@ else if(mode2==2){
         AI[ai]=constant+9;
         ai++;
       }
-    if(grid[start+1][constant+9]!=2||grid[start+1][constant+9]!=7)
+    if(grid[start+1][constant+9]!=2&&grid[start+1][constant+9]!=7)
     {
        AI[ai]=start;
         ai++;
@@ -202,7 +202,7 @@ else if(mode2==2){
         ai++;
     }
 
-      if(grid[end][constant+1]!=1||grid[end][constant+1]!=6)
+      if(grid[end][constant+1]!=1&&grid[end][constant+1]!=6)
        {
            AI[ai]=end;
         ai++;

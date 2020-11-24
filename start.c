@@ -2,15 +2,18 @@
 
 
 
-void init ()
+void start ()
  {
 
-     int menu;
+
 
     printf("\n\n\n\t\t\t\t\t\tDots and Boxes\n\n\n\n\n");
+    color(5);
     printf("\t\t\t\t 1-start game\n\n\t\t\t\t2-load game\n\n\t\t\t\t3-top 10 player\n\n\t\t\t\t 4-exit \n\n");
+color(15);
 
   //this is for error correction if the user inputs a character or more than one input
+  fflush(stdin);
 char scan[100];
         // scanf("%d",&menu);
         fgets (scan,100,stdin);
@@ -25,8 +28,8 @@ menu=atoi(scan);
 
     if(menu==1)
        {
-
-//If the user 
+color(3);
+//If the user
   printf("choose \n1-one player \t\t2-two player\n");
  fgets (scan,100,stdin);
 mode2=atoi(scan);
@@ -35,6 +38,7 @@ mode2=atoi(scan);
 fgets (scan,100,stdin);
 mode2=atoi(scan);
       }
+       color(15);
    if(mode2==2)
   {
       printf("player 1 name: ");
@@ -46,21 +50,23 @@ mode2=atoi(scan);
        p[strlen(p)-1] = 0;
        char *b = two.name;
          b[strlen(b)-1] = 0;
-    
-    
-  }
 
+
+  }
+color(15);
 
   if(mode2==1)
   {
+      color(1);
       printf("Enter your name: ");
       fgets(alone.name,100,stdin);
+color(15);
       char *p = alone.name;
         p[strlen(p)-1] = 0;
 
   }
 
-
+color(15);
 
   printf("choose \n1-beginner \t\t 2-expert :  ");
  fgets (scan,100,stdin);
@@ -124,11 +130,12 @@ mode1=atoi(scan);
             grid[i][j]=3; //3 for dots
     }
  }
- 
- 
-  
-       else if (menu==2)
-    {  printf("which game do you want to save ?\n\n1-game one\t\t2- game two\t\t 3-game three \n");
+
+
+
+      if (menu==2)
+    {
+        printf("which game do you want to load ?\n\n1-game one\t\t2- game two\t\t 3-game three \n");
      fgets (scan,100,stdin);
       game=atoi(scan);
       while(game!=1&&game!=2&&game!=3)
@@ -162,9 +169,9 @@ mode1=atoi(scan);
         //
     }
 
- 
- 
- 
+
+
+
     if(menu==1||menu==2)
     {
 
@@ -180,7 +187,7 @@ mode1=atoi(scan);
       else if(menu==3){
         load_top_10();
         delay(5);
-        init(grid,&max_r ,&max_c);
+        start(grid,&max_r ,&max_c);
        }
 
 

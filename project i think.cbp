@@ -34,6 +34,12 @@
 		<Unit filename="Color.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Computer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Delay.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Functions.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -43,11 +49,27 @@
 		<Unit filename="Horizontalwin.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Print grid.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="README.md" />
 		<Unit filename="Redo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Save top 10.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Save.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Start.h">
 			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Undo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Variables.c">
+			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Verticalwin.h">
 			<Option target="&lt;{~None~}&gt;" />
@@ -64,7 +86,17 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="project i think.cbp" />
+		<Unit filename="project i think.depend" />
 		<Unit filename="start.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="the winner" />
+		<Unit filename="the winner.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="time" />
+		<Unit filename="time.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="vertical win.c">

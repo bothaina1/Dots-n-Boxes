@@ -7,7 +7,7 @@ void printgrid()
 
 {
 
-
+ system("cls");
 printf("\n\n\n\n");
         for(index=1;index<=maxindex;index++)
     {
